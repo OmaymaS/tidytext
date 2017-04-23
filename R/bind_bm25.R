@@ -1,4 +1,4 @@
-#' Bind BM25 score
+#' Bind BM25 Score
 #'
 #' @param tbl A tidy text dataset with one-row-per-term-per-document
 #' @param term_col Column containing terms
@@ -7,7 +7,10 @@
 #' @param k tuning parameter to modify the impact the TF. higher k causes TF to take longer to reach saturation.
 #' @param b tuning parameter to control the effect of document length normalization. \code{b = 0} disables normalization and \code{b = 1} enables full normalization.
 #'
-#' @details \code{bind_bm25} is given bare names, while \code{bind_bm25_}
+#' @details
+#' BM25 (also known as Okapi BM25) is probabilistic term weighting model. One of its uses is search engines, where it is used as a ranking function.
+#'
+#' \code{bind_bm25} is given bare names, while \code{bind_bm25_}
 #' is given strings.
 #' The dataset must have one row per document-term combination.
 #' @examples
