@@ -10,6 +10,21 @@
 #' @details \code{bind_bm25} is given bare names, while \code{bind_bm25_}
 #' is given strings.
 #' The dataset must have one row per document-term combination.
+#' @examples
+#'
+#' library(dplyr)
+#' library(janeaustenr)
+#'
+#' book_words <- austen_books() %>%
+#'   unnest_tokens(word, text) %>%
+#'   anti_join(stop_words) %>%
+#'   count(book, word, sort = TRUE) %>%
+#'   ungroup()
+#'
+#' # calculate the BM25 score for words in each document
+#' book_words %>%
+#'   bind_bm25(word, book, n, k = 1.2, b = 1) %>%
+#'   arrange(desc(bm25))
 
 #' @export
 bind_bm25 <- function(tbl, term_col, document_col, n_col, k = 1.2, b = 1) {
